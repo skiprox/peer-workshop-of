@@ -19,7 +19,7 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 * Using different shaders on different objects
 * Using textures in shaders
 	* Passing images and video as textures
-* FBOs and VBOs
+* _Maybe_ FBOs and VBOs
 
 ### Learning Objectives
 
@@ -43,16 +43,11 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 
 | Name | Duration | Purpose | Description |
 | ---- | ---- | ---- | ---- |
-| Intro | 10 mins | Engage | Talk about openFrameworks, why it might be a good tool for you |
-| Setup | 5 mins | Study | Get it running on everyones machines |
-| Walkthrough | 15 mins | Study | Walk through the pipeline, from main.cpp to ofApp.h to ofApp.cpp to vert and frag shaders, talk about built in variables in OF shaders |
+| Intro | 5 mins | Engage | Quick review of openFrameworks, why it might be a good tool for you |
+| Walkthrough | 5 mins | Study | Quick review of pipeline, from main.cpp to ofApp.h to ofApp.cpp to vert and frag shaders, talk about built in variables in OF shaders |
 | Explore | 15 mins | Activate | Create a new shape or stick with the existing mesh, play around with values in your vert and frag shaders, pass different uniforms to the shaders to make them interactive |
-| Frag Shaders | 15 mins | Study | Run the frag shader repo provided. Update the code to take multiple shaders for multiple objects |
-| Frag Shaders cont. | 15 mins | Activate | Try to get some ray casting code (or something similarly insane) onto objects in your scene |
+| Frag Shaders | 20 mins | Study | Run the frag shader repo provided. Update the code to take multiple shaders for multiple objects. Add textures to the shapes |
 | Vert Shaders | 15 mins | Study | Run the vert shader repo provided. Talk about vertex manipulation and lighting, and passing information |
-| Vert Shaders cont. | 15 mins | Activate | Play around with using both vert and frag shaders in conjunction |
-| Textures | 5 mins | Study | How textures are used in OF |
-| Textures cont. | 15 mins | Activate | Wrap it up! |
 
 
 ### To Prepare/Bring
@@ -68,6 +63,6 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 * This repository with demo starter code to cover the following:
 	* The pipeline, creating objects, built in variables, writing uniforms and varyings and passing them around
 	* Frag shaders on meshes
+	* Textures on meshes
 	* Vert shaders on meshes
-	* Textures!
 
