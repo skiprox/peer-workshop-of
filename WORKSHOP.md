@@ -4,7 +4,13 @@
 
 >Openframeworks is an opensource C++ library (FRAMEWORK!!) primarily used for creative coding.
 >It is a great tool for making computational sketches, interactive, and generatve art.
->Good online documentation via openframeworks.cc, forum.openframeworks.cc, and Lewis Lipton video tutorials: https://www.youtube.com/channel/UC8Wzk_R1GoPkPqLo-obU_kQ
+>
+>Good online documentation can be found at 
+>> https://openframeworks.cc
+>
+>> https://forum.openframeworks.cc
+>
+>>Lewis Lipton video tutorials: https://www.youtube.com/channel/UC8Wzk_R1GoPkPqLo-obU_kQ
 
 >It is also very easy to load shaders into your OF project via the ofShader object:
 >>shader.load()  loads a shader from files stored in your bin/data folder
