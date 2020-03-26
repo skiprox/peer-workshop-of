@@ -136,8 +136,7 @@ Desktop.ini
 # ignore generated binaries
 # but not the data folder
 
-/bin/*
-!/bin/data/
+/bin/*.app
 
 # general
 
@@ -257,7 +256,6 @@ DerivedData/
 x64/
 x86/
 bld/
-[Bb]in/
 [Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
