@@ -144,13 +144,22 @@ void ofApp::draw(){
 
 #### openFrameworks openGL variables
 
-We're given some variables *for free* in openFrameworks available to shaders. These are:
+To help understand what we're talking about in this section, here is a brief explanation of "model", "view" and "projection" matrices.
+
+> The model, view and projection matrices are three separate matrices. The model matrix maps from an object's local coordinate space into world space. The view matrix maps from world space to camera space. The projection matrix from camera space to screen space.
+
+With that, we're given some variables *for free* in openFrameworks available to shaders. These are:
 
 * `uniform mat4 modelViewMatrix;`
+	* A combination of model matrix and view matrix. Model matrix defines the frame's positions of the primitives you are going to draw, while view matrix defines the position of the camera.
 * `uniform mat4 projectionMatrix;`
+	* Defines the characteristics of your camera such as clip planes, field of view, and projection method.
 * `uniform mat4 modelViewProjectionMatrix;`
+	* A combination of the model, view, and projection matrices. 
 * `uniform mat4 textureMatrix;`
+	* Honestly? A little unsure about this one
 * `uniform vec4 globalColor;`
+	* Global colors available to the shader
 
 ## 03 Explore
 
