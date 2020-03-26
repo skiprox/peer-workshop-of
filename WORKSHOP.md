@@ -49,7 +49,39 @@ The header file for our `ofApp.cpp` file (which is where _the magic happens_). I
 
 Where _the magic happens_. The main functions we want to pay attention to in this file are our `setup()`, and our `update()`/`draw()` functions. `setup()` gets called once at the beginning, and then `update()`/`draw()` get called over and over throughout the lifecycle of the program.
 
-It is also very easy to load shaders into your OF project via the ofShader object.
+If we're drawing a cool circle on our screen, the file will look something like this:
+
+```
+#include "ofApp.h"
+
+float circleX = 0.0;
+
+//--------------------------
+void ofApp::setup(){
+	ofSetCircleResolution(100);
+	ofBackground(34, 34, 34);
+}
+
+//--------------------------
+void ofApp::update(){
+	circleX = ofMap(
+		sin(ofGetElapsedTimef()/100.0),
+		-1.0,
+		1.0,
+		0.0,
+		ofGetWidth()
+	);
+}
+
+//--------------------------
+void ofApp::draw(){
+	ofSetColor(245, 58, 135);
+	ofFill();
+	ofDrawCircle(circleX, ofGetHeight()/2.0, 100.0);
+}
+```
+
+To get to the good parts: it is very easy to load shaders into your OF project via the ofShader object.
 
 This command loads a shader from files stored in your bin/data folder:
 
@@ -66,6 +98,46 @@ shader.begin()
 And, to stop using your shader:
 ```
 shader.end()
+```
+
+Let's check this all out in action:
+
+```
+#include "ofApp.h"
+
+ofShader shader;
+float circleX = 0.0;
+
+//--------------------------
+void ofApp::setup(){
+	ofSetCircleResolution(100);
+	ofBackground(34, 34, 34);
+	// load our shaders
+	shader.load(
+		"someShaderFile.vert",
+		"anotherShaderFile.frag"
+	);
+}
+
+//--------------------------
+void ofApp::update(){
+	circleX = ofMap(
+		sin(ofGetElapsedTimef()/100.0),
+		-1.0,
+		1.0,
+		0.0,
+		ofGetWidth()
+	);
+}
+
+//--------------------------
+void ofApp::draw(){
+	ofSetColor(245, 58, 135);
+	ofFill();
+	shader.begin();
+	ofDrawCircle(circleX, ofGetHeight()/2.0, 100.0);
+	shader.end();
+}
 ```
 
 ### 03 Explore
