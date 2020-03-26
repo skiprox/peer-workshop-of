@@ -163,7 +163,12 @@ With that, we're given some variables *for free* in openFrameworks available to 
 
 ## 03 Explore
 
-> Oh that's cool [SEAN]
+Goals:
+
+* Make a gradient on the circle
+* Add movement to the gradient
+* Apply a frag shader you've previously written or we've covered in class to the circle
+	* What about a raycasting one? :scream:
 
 ## 04 Frag Shaders
 

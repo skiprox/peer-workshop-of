@@ -6,7 +6,8 @@
 
 In this workshop we will teach the shader openFrameworks pipeline. This will include:
 
-* How versioning works (and what different versions offer)
+* How openGL versioning works in openFrameworks (and what different versions offer)
+	* This is a warning because different versions use different keywords to the same things. We are going to use *BLANK*
 * Built in variables available to shaders in openFrameworks
 	* uniform mat4 modelViewMatrix;
 	* uniform mat4 projectionMatrix;
@@ -19,7 +20,6 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 * Using different shaders on different objects
 * Using textures in shaders
 	* Passing images and video as textures
-* _Maybe_ FBOs and VBOs
 
 ### Learning Objectives
 
@@ -46,8 +46,10 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 | Intro | 5 mins | Engage | Quick review of openFrameworks, why it might be a good tool for you |
 | Walkthrough | 5 mins | Study | Quick review of pipeline, from main.cpp to ofApp.h to ofApp.cpp to vert and frag shaders, talk about built in variables in OF shaders |
 | Explore | 15 mins | Activate | Create a new shape or stick with the existing mesh, play around with values in your vert and frag shaders, pass different uniforms to the shaders to make them interactive |
-| Frag Shaders | 20 mins | Study | Run the frag shader repo provided. Update the code to take multiple shaders for multiple objects. Add textures to the shapes |
-| Vert Shaders | 15 mins | Study | Run the vert shader repo provided. Talk about vertex manipulation and lighting, and passing information |
+| Frag Shaders | 10 mins | Study | Talk through frag shaders in openFrameworks |
+| Frag Shaders | 10 mins | Activate | Run the frag shader repo provided. Update the code to take multiple shaders for multiple objects. Add textures to the shapes |
+| Vert Shaders | 5 mins | Study | Talk through vert shaders in openFrameworks |
+| Vert Shaders | 10 mins | Activate | Run the vert shader repo provided. Talk about vertex manipulation and lighting, and passing information |
 
 
 ### To Prepare/Bring
