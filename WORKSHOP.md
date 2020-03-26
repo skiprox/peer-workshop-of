@@ -15,7 +15,7 @@ Good online documentation can be found at:
 For inspiration, let's check out some of these projects:
 
 * [Reface Portrait Sequencer](https://vimeo.com/2355887)
-* [Augmented Hnad Series](http://www.flong.com/projects/augmented-hand-series/)
+* [Augmented Hand Series](http://www.flong.com/projects/augmented-hand-series/)
 
 ## 02 Walkthrough
 
