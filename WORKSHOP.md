@@ -81,6 +81,8 @@ void ofApp::draw(){
 }
 ```
 
+#### Getting a shader in there
+
 To get to the good parts: it is very easy to load shaders into your OF project via the ofShader object.
 
 This command loads a shader from files stored in your bin/data folder:
@@ -139,6 +141,16 @@ void ofApp::draw(){
 	shader.end();
 }
 ```
+
+#### openFrameworks openGL variables
+
+We're given some variables *for free* in openFrameworks available to shaders. These are:
+
+* `uniform mat4 modelViewMatrix;`
+* `uniform mat4 projectionMatrix;`
+* `uniform mat4 modelViewProjectionMatrix;`
+* `uniform mat4 textureMatrix;`
+* `uniform vec4 globalColor;`
 
 ## 03 Explore
 
