@@ -9,9 +9,10 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 
-		ofShader shader;
+		ofShader colorWithLightShader;
 
 		ofEasyCam cam;
 		ofLight light;
+		ofMaterial material;
 		
 };
