@@ -6,8 +6,10 @@ class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
+		void setupLightingExample();
 		void update();
 		void draw();
+		void runLightingExample();
 
 		ofShader colorWithLightShader;
 

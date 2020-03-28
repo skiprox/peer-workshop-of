@@ -6,23 +6,32 @@ float circleX = 0.0;
 void ofApp::setup(){
 	ofSetCircleResolution(100);
 	ofBackground(34, 34, 34);
-	colorWithLightShader.load("shaders/colorWithLight.vert","shaders/colorWithLight.frag");
 	ofEnableDepthTest();
 	ofSetVerticalSync(true);
     ofEnableLighting();
     ofEnableAlphaBlending();
     ofEnableSmoothing();
-    // Material stuff
+
+    // An example with lighting
+    setupLightingExample();
+}
+
+// Example from
+// https://forum.openframeworks.cc/t/3d-model-in-custom-shader/20004/2
+//---------------------------------------
+void ofApp::setupLightingExample(){
+	colorWithLightShader.load("shaders/colorWithLight.vert","shaders/colorWithLight.frag");
+	// Material stuff
     material.setShininess(120);
     material.setSpecularColor(ofColor(255, 255, 255, 255));
     material.setEmissiveColor(ofColor(0, 0, 0, 255));
     material.setDiffuseColor(ofColor(255, 255, 255, 255));
     material.setAmbientColor(ofColor(255, 255, 255, 255));
     // Light stuff
-    light.enable();
-    light.setDiffuseColor(ofColor(255.0, 255.0, 0.0));
-    light.setPointLight();
-    // light.setPosition(0.0,0,-10.0);
+    // no longer needed
+    // light.enable();
+    // light.setDiffuseColor(ofColor(255.0, 255.0, 0.0));
+    // light.setPointLight();
 }
 
 //---------------------------------------
@@ -39,18 +48,7 @@ void ofApp::update(){
 //---------------------------------------
 void ofApp::draw(){
 	cam.begin();
-	ofEnableLighting();
-	// material.begin();
-	ofSetColor(245, 58, 135);
-	ofFill();
-	colorWithLightShader.begin();
-	colorWithLightShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-	colorWithLightShader.setUniform4f("u_materialColor", ofColor(255.0, 80.0, 130.0, 255.0));
-	ofDrawSphere(circleX, 0.0, 0.0, 100);
-	colorWithLightShader.end();
-	// material.end();
-	ofDisableLighting();
-	light.draw();
+	runLightingExample();
 	cam.end();
 }
 
@@ -58,3 +56,20 @@ void ofApp::draw(){
 // CODE CHUNKS
 // CHUNKY CODES
 //---------------------------------
+
+//---------------------------------------
+void ofApp::runLightingExample(){
+	// Light stuff,
+	// no longer needed
+	// ofEnableLighting();
+	ofFill();
+	colorWithLightShader.begin();
+	colorWithLightShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+	colorWithLightShader.setUniform4f("u_materialColor", ofColor(255.0, 80.0, 130.0, 255.0));
+	ofDrawSphere(circleX, 0.0, 0.0, 100);
+	colorWithLightShader.end();
+	// Light stuff,
+	// no longer needed
+	// ofDisableLighting();
+	// light.draw();
+}
