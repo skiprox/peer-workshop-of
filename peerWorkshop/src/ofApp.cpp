@@ -12,8 +12,23 @@ void ofApp::setup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
 
-    // An example with lighting
+    // Explore setup! [NOAH]
+    // Create some shapes
+    // This provides them with a few 3D shapes,
+    // a basic shader on top of that (maybe returning one color)
+    // and they can play around with that
+
+    // An example with lighting,
+    // how to incorportate normals into your shader
     setupLightingExample();
+
+    // Going further! [SEAN + NOAH, each add 2 frag shaders that can be used later]
+    // A raycasting example? Just some more complex frag shaders
+    // Passing in uniforms!
+
+    // Vert shader stuff [SEAN]
+    // What to do here? idk?
+    // Make a blobby shape that wiggles AND RETAINS LIGHTING
 }
 
 // Example from
@@ -48,7 +63,12 @@ void ofApp::update(){
 //---------------------------------------
 void ofApp::draw(){
 	cam.begin();
+
+	// Explore examples
+
+	// Lighting shader example
 	runLightingExample();
+
 	cam.end();
 }
 
