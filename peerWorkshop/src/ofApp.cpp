@@ -6,7 +6,7 @@ float circleX = 0.0;
 void ofApp::setup(){
 	ofSetCircleResolution(100);
 	ofBackground(34, 34, 34);
-	// shader.load("shaders/start.vert","shaders/start.frag");
+	shader.load("shaders/start.vert","shaders/start.frag");
 }
 
 //---------------------------------------
@@ -24,12 +24,12 @@ void ofApp::update(){
 void ofApp::draw(){
 	ofSetColor(245, 58, 135);
 	ofFill();
-	// shader.begin();
+	shader.begin();
 	ofDrawCircle(circleX,
 		ofGetHeight()/2.0,
 		100.0
 	);
-	// shader.end();
+	shader.end();
 }
 
 //---------------------------------

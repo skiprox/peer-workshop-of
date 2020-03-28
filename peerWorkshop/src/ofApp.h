@@ -10,5 +10,8 @@ class ofApp : public ofBaseApp{
 		void draw();
 
 		ofShader shader;
+
+		ofEasyCam cam;
+		ofLight light;
 		
 };

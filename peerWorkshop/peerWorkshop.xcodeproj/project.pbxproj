@@ -171,135 +171,6 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>8B46FAFBEAF6512A8B01D852</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>triangle.h</string>
-				<key>path</key>
-				<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle/triangle.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>7E04D4FAB9708987A9D19718</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>2DA51A784A7616A2059E42E6</string>
-					<string>8B46FAFBEAF6512A8B01D852</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>Triangle</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>FCAA0CCA876CD31F282D632F</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>7E04D4FAB9708987A9D19718</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>libs</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>14A958D73B2B4FA55DEDAF41</key>
-			<dict>
-				<key>fileRef</key>
-				<string>2DA51A784A7616A2059E42E6</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>2DA51A784A7616A2059E42E6</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>triangle.cpp</string>
-				<key>path</key>
-				<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle/triangle.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>6557DB19D55F930C91FA73D2</key>
-			<dict>
-				<key>fileRef</key>
-				<string>409957DB0AAD85836C599F4C</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>409957DB0AAD85836C599F4C</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxTriangleMesh.cpp</string>
-				<key>path</key>
-				<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src/ofxTriangleMesh.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>374C131120F53C04B100FE90</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>16BA12196FAE859CA9FE4294</string>
-					<string>409957DB0AAD85836C599F4C</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>src</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>53BEBF43328554CDA832CC05</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>374C131120F53C04B100FE90</string>
-					<string>FCAA0CCA876CD31F282D632F</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>ofxTriangleMesh</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>16BA12196FAE859CA9FE4294</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxTriangleMesh.h</string>
-				<key>path</key>
-				<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src/ofxTriangleMesh.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
 			<key>68207C649D061C80EF7C7BE3</key>
 			<dict>
 				<key>explicitFileType</key>
@@ -861,10 +732,8 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>../../../../../openFrameworks/addons/ofxGui/src</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/libs</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/src</string>
 					</array>
@@ -926,10 +795,8 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>../../../../../openFrameworks/addons/ofxGui/src</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/libs</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/src</string>
 					</array>
@@ -974,7 +841,6 @@ fi
 				<key>children</key>
 				<array>
 					<string>480A780D8D0308AE4A368801</string>
-					<string>53BEBF43328554CDA832CC05</string>
 					<string>1F4FB5C423662B96ADFDCC0B</string>
 				</array>
 				<key>isa</key>
@@ -1130,10 +996,8 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>../../../../../openFrameworks/addons/ofxGui/src</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/libs</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/src</string>
 					</array>
@@ -1193,10 +1057,8 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>../../../../../openFrameworks/addons/ofxGui/src</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/libs</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/src</string>
 					</array>
@@ -1265,8 +1127,6 @@ fi
 					<string>2888E36560937DE1A3FF3F00</string>
 					<string>C8BDF55AB0A8BCB0B5BE4215</string>
 					<string>925F781B5D4493177F993E68</string>
-					<string>6557DB19D55F930C91FA73D2</string>
-					<string>14A958D73B2B4FA55DEDAF41</string>
 					<string>EAF44EAA574E00109053FFD7</string>
 					<string>29D0996AE89B3B9854EDF7BD</string>
 					<string>800E86EA89A89CB2821BC6DD</string>
@@ -1356,10 +1216,8 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>../../../../../openFrameworks/addons/ofxGui/src</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/libs</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/src</string>
 					</array>
@@ -1406,10 +1264,8 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>../../../../../openFrameworks/addons/ofxGui/src</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/libs/Triangle</string>
-						<string>../../../../../openFrameworks/addons/ofxTriangleMesh/src</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/libs</string>
 						<string>../../../../../openFrameworks/addons/ofxXmlSettings/src</string>
 					</array>
