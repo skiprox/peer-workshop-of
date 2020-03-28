@@ -1,10 +1,13 @@
-#version 120
+#version 150
+
+in vec4 position;
+
+uniform mat4 modelViewProjectionMatrix;
+
 
 void main(){
-	
+    	
 	//get our current vertex position so we can modify it
-	vec4 pos = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
-	
-	//finally set the pos to be that actual position rendered
+	vec4 pos = modelViewProjectionMatrix * position;
 	gl_Position = pos;
 }

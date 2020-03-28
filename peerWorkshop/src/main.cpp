@@ -4,18 +4,10 @@
 //========================================================================
 int main( ){
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	int windowWidth = 1024;
-	int windowHeight = 500;
 
-	#ifdef TARGET_OPENGLES
-    	ofGLESWindowSettings settings;
-	settings.width = windowWidth;
-	settings.height = windowHeight;
-	settings.setGLESVersion(3.2);
-	ofCreateWindow(settings);
-	#else
-	ofSetupOpenGL(windowWidth, windowHeight, OF_WINDOW);
-	#endif
+	ofGLWindowSettings settings;
+    settings.setGLVersion(4,1); /// < select your GL Version here
+    ofCreateWindow(settings);
 
 	ofRunApp( new ofApp());
 
