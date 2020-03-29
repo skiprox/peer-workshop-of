@@ -35,7 +35,7 @@ void ofApp::setup(){
 // https://forum.openframeworks.cc/t/3d-model-in-custom-shader/20004/2
 //---------------------------------------
 void ofApp::setupLightingExample(){
-	colorWithLightShader.load("shaders/colorWithLight.vert","shaders/colorWithLight.frag");
+	colorWithLightShader.load("shaders/lighting/shader.vert","shaders/lighting/shader.frag");
 	// Material stuff
     material.setShininess(120);
     material.setSpecularColor(ofColor(255, 255, 255, 255));
