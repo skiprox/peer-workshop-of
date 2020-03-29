@@ -13,7 +13,8 @@ uniform mat4 normalMatrix;
 uniform vec4 u_materialColor;
 
 void main(){
-    vec3 light = vec3(0.5, 0.2, 1.0);
+	// This is where the light is
+    vec3 light = vec3(0.5, 2.2, 1.0);
     light = normalize(light);
 
     // dot product
