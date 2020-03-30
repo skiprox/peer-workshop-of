@@ -10,6 +10,8 @@ class ofApp : public ofBaseApp{
 		void setupRaycastingExample();
 		void update();
 		void draw();
+        void keyPressed(int key);
+
 		void runLightingExample();
 		void runRaycastingExample();
 
@@ -35,11 +37,19 @@ class ofApp : public ofBaseApp{
     ofPlanePrimitive plane;
     ofMesh mesh;
     ofBoxPrimitive box;
+    ofConePrimitive cone;
+    ofIcoSpherePrimitive icoSphere;
+    
+    bool bWireframe;
+    bool bFill;
     
     float rotate;
+    float radius;
     ofTexture tex;
     ofImage img;
     ofVec3f center;
+    
+    
 
 		
 };

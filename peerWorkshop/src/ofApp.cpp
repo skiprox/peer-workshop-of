@@ -22,12 +22,9 @@ void ofApp::setup(){
 	// and they can play around with that
 
 	// for primitives
-	sphere.setRadius(100);
 
 	// for backward compatibility reasons
 	ofDisableArbTex();
-	// ofLoadImage(tex, "images/empireOfLight.jpg");
-	// img.load("images/empireOfLight.jpg");
 
 	// An example with lighting,
 	// how to incorportate normals into your shader
@@ -72,12 +69,15 @@ void ofApp::setupRaycastingExample(){
 //---------------------------------------
 void ofApp::setupInkExample(){
 	inkInWaterShader.load("shaders/inkInWater");
-//    center.set(0, 0, 0);
-	// sphere.setRadius(180.0f);
-//    sphere.mapTexCoordsFromTexture(img.getTexture());
-//    ofMesh* mesh = sphere.getMeshPtr();
-//    mesh->setColorForIndices(0, mesh->getNumIndices(), ofColor::red);
-
+    bFill = true;
+    bWireframe = false;
+    
+    sphere.setRadius(100);
+    box.set(100);
+    cylinder.setRadius(100);
+    cone.setRadius(100);
+    icoSphere.setRadius(200);
+    plane.setWidth(90);
 
 }
 //---------------------------------------
@@ -102,10 +102,9 @@ void ofApp::draw(){
 	cam.begin();
 
 	// Explore examples
-
+    
 	// Lighting shader example
 	runLightingExample();
-
 
 	//basic gradient example
 	runGradientExample();
@@ -117,6 +116,15 @@ void ofApp::draw(){
 	runRaycastingExample();
 
 	cam.end();
+    
+    
+    //instead of gui
+    ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
+    stringstream ss;
+    ss << "(f): Toggle Fullscreen"<<endl<<"(s): Draw Solid Shapes"<<endl<<"(w): Draw Wireframes"<<endl;
+    ss <<"(1/2/3/4): Set Resolutions" <<endl;
+    ofDrawBitmapStringHighlight(ss.str().c_str(), 20, 20);
+
 }
 
 //---------------------------------
@@ -127,19 +135,13 @@ void ofApp::draw(){
 // Lighting example
 //---------------------------------------
 void ofApp::runLightingExample(){
-	// Light stuff,
-	// no longer needed
-	// ofEnableLighting();
 	ofFill();
 	colorWithLightShader.begin();
 	colorWithLightShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
 	colorWithLightShader.setUniform4f("u_materialColor", ofColor(255.0, 80.0, 130.0, 255.0));
 	ofDrawSphere(circleX, 0.0, 0.0, 100);
 	colorWithLightShader.end();
-	// Light stuff,
-	// no longer needed
-	// ofDisableLighting();
-	// light.draw();
+
 }
 
 // Raycasting example
@@ -152,31 +154,36 @@ void ofApp::runRaycastingExample(){
 	ofDrawSphere(100.0, 100.0, 0.0, 100);
 	raycastingShader.end();
 }
+//---------------------------------------
 
 void ofApp::runInkExample(){
 	inkInWaterShader.begin();
 	inkInWaterShader.setUniform1f("u_time", ofGetElapsedTimef());
 	inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
 
-//    ofRotateZDeg(rotate);
-//    ofRotateXDeg(rotate);
-//    tex.bind();
-//    box.set(100);
-//    box.setPosition(0,0,0);
-//    box.draw();
-	// ofDrawBox(0, 0, 0, 200);
-//    ofDrawCylinder(0, 0, 0, 50, 100);
-	sphere.setRadius(100);
-	sphere.draw();
-//    ofDrawSphere(0,0,0,100);
-
-//    ofPushMatrix();
-//    ofTranslate(center.x, center.y, center.z - 300);
-//    ofRotate(ofGetElapsedTimef() * .8 * RAD_TO_DEG, 0, 1, 0);
-//    sphere.draw();
-//    ofPopMatrix();
-	//    tex.unbind();
-//    ofPopMatrix();
+    ofPushMatrix();
+    ofRotateZDeg(rotate);
+    ofRotateXDeg(rotate);
+    if(bWireframe == true){
+//        sphere.drawWireframe();
+//        cone.drawWireframe();
+//        cylinder.drawWireframe();
+//        plane.drawWireframe();
+//        mesh.drawWireframe();
+        icoSphere.drawWireframe();
+//        box.drawWireframe();
+    }
+    if(bFill == true){
+//        sphere.draw();
+//        cone.draw();
+//        cylinder.draw();
+//        plane.draw();
+//        mesh.draw();
+        icoSphere.draw();
+//        box.draw();
+    }
+    
+    ofPopMatrix();
 	inkInWaterShader.end();
 
 }
@@ -185,6 +192,54 @@ void ofApp::runGradientExample(){
 	basicGradient.begin();
 	basicGradient.setUniform1f("u_time", ofGetElapsedTimef());
 	basicGradient.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-	ofDrawSphere(-100.0, -100.0, 0.0, 100);
+    box.draw();
 	basicGradient.end();
+}
+//---------------------------------------
+void ofApp::keyPressed(int key){
+    
+    switch(key){
+        case 'f':
+            ofToggleFullscreen();
+            break;
+        case 's':
+            bFill = !bFill;
+            break;
+        case 'w':
+            bWireframe = !bWireframe;
+            break;
+        case '1':
+            sphere.setResolution(4);
+            icoSphere.setResolution(0); // number of subdivides //
+            plane.setResolution(3, 2);
+            cylinder.setResolution(4,2,0);
+            cone.setResolution(4, 1, 0);
+            box.setResolution(1);
+            break;
+        case '2':
+            sphere.setResolution(8);
+            icoSphere.setResolution(1);
+            plane.setResolution(6, 4);
+            cylinder.setResolution(8,4,1);
+            cone.setResolution(7, 2, 1);
+            box.setResolution(2);
+            break;
+        case '3':
+            sphere.setResolution(16);
+            icoSphere.setResolution(2);
+            plane.setResolution(8,5);
+            cylinder.setResolution(12, 9, 2);
+            cone.setResolution(10, 5, 2);
+            box.setResolution(6);
+            break;
+        case '4':
+            sphere.setResolution(48);
+            icoSphere.setResolution(4);
+            plane.setResolution(12, 9);
+            cylinder.setResolution(20, 13, 4);
+            cone.setResolution(20, 9, 3);
+            box.setResolution(10);
+            break;
+    }
+
 }
