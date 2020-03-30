@@ -183,7 +183,7 @@ void ofApp::runPrimitiveExample(){
 //    box.set(100);
 //    box.setPosition(0,0,0);
 //    box.draw();
-//    ofDrawBox(0, 0, 0, 200);
+    ofDrawBox(0, 0, 0, 200);
 //    ofDrawCylinder(0, 0, 0, 50, 100);
 //    sphere.setRadius(100);
 //    sphere.draw();
