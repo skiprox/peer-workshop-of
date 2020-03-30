@@ -19,7 +19,8 @@ void main(){
     light = normalize(light);
 
     // dot product
-    float dProd = max(0.0, dot(vecNormal, light));
+    // make the minimum 0.3 so we get *some* light everywhere
+    float dProd = max(0.3, dot(vecNormal, light));
 
     //color
     // the materialcolor gets passed in from our program,
