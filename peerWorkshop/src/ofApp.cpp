@@ -26,13 +26,18 @@ void ofApp::setup(){
 	// for backward compatibility reasons
 	ofDisableArbTex();
 
+	/*
+	* Setup all primitive shapes
+	*/
+	setupPrimitiveShapes();
+
 	// An example with lighting,
 	// how to incorportate normals into your shader
 	setupLightingExample();
 
-
 	// Ink example
 	setupInkExample();
+
 	// Gradient example
 	setupGradientExample();
 
@@ -46,13 +51,34 @@ void ofApp::setup(){
 	// Make a blobby shape that wiggles AND RETAINS LIGHTING
 }
 
+// Establish all the primitive shapes
+//---------------------------------------
+void ofApp::setupPrimitiveShapes(){
+	bFill = true;
+    bWireframe = false;
+    cone.setRadius(100);
+    plane.setWidth(90);
+    // basic lighting example
+    cylinder.set(100, 200);
+    // ink example
+    icoSphere.setRadius(200);
+    icoSphere.setPosition(0, 0, 0);
+    // gradient example
+    box.set(100);
+	box.setPosition(-200, -200, 0);
+	// raycasting example
+	sphere.setRadius(100);
+	sphere.setPosition(200, 200, 0);
+}
+
 // Lighting example
 // help from
 // https://forum.openframeworks.cc/t/3d-model-in-custom-shader/20004/2
 //---------------------------------------
 void ofApp::setupLightingExample(){
 	colorWithLightShader.load("shaders/lighting/shader.vert","shaders/lighting/shader.frag");
-	// Material stuff
+	// Material stuff,
+	// for this example specifically
 	material.setShininess(120);
 	material.setSpecularColor(ofColor(255, 255, 255, 255));
 	material.setEmissiveColor(ofColor(0, 0, 0, 255));
@@ -60,30 +86,25 @@ void ofApp::setupLightingExample(){
 	material.setAmbientColor(ofColor(255, 255, 255, 255));
 }
 
-// Raycasting example
-//---------------------------------------
-void ofApp::setupRaycastingExample(){
-	raycastingShader.load("shaders/raycasting/shader.vert","shaders/raycasting/shader.frag");
-}
-
+// Ink shader setup
 //---------------------------------------
 void ofApp::setupInkExample(){
-	inkInWaterShader.load("shaders/inkInWater");
-    bFill = true;
-    bWireframe = false;
-    
-    sphere.setRadius(100);
-    box.set(100);
-    cylinder.setRadius(100);
-    cone.setRadius(100);
-    icoSphere.setRadius(200);
-    plane.setWidth(90);
-
+	inkInWaterShader.load("shaders/inkInWater/shader");
 }
+
+// Gradient shader setup
 //---------------------------------------
 void ofApp::setupGradientExample(){
-	basicGradient.load("shaders/gradient");
+	basicGradient.load("shaders/gradient/shader");
 }
+
+// Raycasting shader setup
+//---------------------------------------
+void ofApp::setupRaycastingExample(){
+	raycastingShader.load("shaders/raycasting/shader");
+}
+
+// Main update function
 //---------------------------------------
 void ofApp::update(){
 	ofBackground(0);
@@ -99,26 +120,39 @@ void ofApp::update(){
 
 //---------------------------------------
 void ofApp::draw(){
+	/*
+	* Lights! Camera! Action!
+	* *~* That's showbiz, baby *~*
+	*/
 	cam.begin();
 
-	// Explore examples
-    
 	// Lighting shader example
+	// this is a solid color on a sphere,
+	// with lighting applied
 	runLightingExample();
 
-	//basic gradient example
+	// Gradient shader example
+	// this is a gradient on a box
 	runGradientExample();
 
-	//primitive shape texturing example
+	// Ink shader example
+	// this is a goopy ink shader on a sphere
 	runInkExample();
 
-	// Going further examples
+	// Ray casting example
+	// a sweet ray casting thing
+	// on a sphere
 	runRaycastingExample();
 
+	/*
+	* Closing time
+	* *~* you don't have to go home, but you can't stay here *~*
+	*/
 	cam.end();
-    
-    
-    //instead of gui
+
+
+    // Some notes on the screen,
+    // instead of a GUI
     ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
     stringstream ss;
     ss << "(f): Toggle Fullscreen"<<endl<<"(s): Draw Solid Shapes"<<endl<<"(w): Draw Wireframes"<<endl;
@@ -135,69 +169,73 @@ void ofApp::draw(){
 // Lighting example
 //---------------------------------------
 void ofApp::runLightingExample(){
-	ofFill();
-	colorWithLightShader.begin();
-	colorWithLightShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-	colorWithLightShader.setUniform4f("u_materialColor", ofColor(255.0, 80.0, 130.0, 255.0));
-	ofDrawSphere(circleX, 0.0, 0.0, 100);
-	colorWithLightShader.end();
+	if(bWireframe == true){
+        cylinder.setPosition(circleX, 0.0, 0.0);
+		cylinder.drawWireframe();
+    }
+    if(bFill == true){
+    	ofFill();
+		colorWithLightShader.begin();
+		colorWithLightShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+		colorWithLightShader.setUniform4f("u_materialColor", ofColor(255.0, 80.0, 130.0, 255.0));
+		cylinder.setPosition(circleX, 0.0, 0.0);
+		cylinder.draw();
+		colorWithLightShader.end();
+    }
+}
 
+// Ink example
+//---------------------------------------
+void ofApp::runInkExample(){
+    if(bWireframe == true){
+        icoSphere.drawWireframe();
+    }
+    if(bFill == true){
+    	inkInWaterShader.begin();
+		inkInWaterShader.setUniform1f("u_time", ofGetElapsedTimef());
+		inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
+        icoSphere.draw();
+        inkInWaterShader.end();
+    }
+}
+
+// Gradient example, on a box
+//---------------------------------------
+void ofApp::runGradientExample(){
+	if(bWireframe == true){
+        box.drawWireframe();
+    }
+    if(bFill == true){
+    	basicGradient.begin();
+		basicGradient.setUniform1f("u_time", ofGetElapsedTimef());
+		basicGradient.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+	    box.draw();
+		basicGradient.end();
+    }
 }
 
 // Raycasting example
 //---------------------------------------
 void ofApp::runRaycastingExample(){
-	ofSetColor(255, 100, 140);
-	ofFill();
-	raycastingShader.begin();
-	raycastingShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-	ofDrawSphere(100.0, 100.0, 0.0, 100);
-	raycastingShader.end();
-}
-//---------------------------------------
-
-void ofApp::runInkExample(){
-	inkInWaterShader.begin();
-	inkInWaterShader.setUniform1f("u_time", ofGetElapsedTimef());
-	inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
-
-    ofPushMatrix();
-    ofRotateZDeg(rotate);
-    ofRotateXDeg(rotate);
-    if(bWireframe == true){
-//        sphere.drawWireframe();
-//        cone.drawWireframe();
-//        cylinder.drawWireframe();
-//        plane.drawWireframe();
-//        mesh.drawWireframe();
-        icoSphere.drawWireframe();
-//        box.drawWireframe();
+	if(bWireframe == true){
+        sphere.drawWireframe();
     }
     if(bFill == true){
-//        sphere.draw();
-//        cone.draw();
-//        cylinder.draw();
-//        plane.draw();
-//        mesh.draw();
-        icoSphere.draw();
-//        box.draw();
+    	ofSetColor(255, 100, 140);
+		ofFill();
+		raycastingShader.begin();
+		raycastingShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+		sphere.draw();
+		raycastingShader.end();
     }
-    
-    ofPopMatrix();
-	inkInWaterShader.end();
+}
 
-}
-//---------------------------------------
-void ofApp::runGradientExample(){
-	basicGradient.begin();
-	basicGradient.setUniform1f("u_time", ofGetElapsedTimef());
-	basicGradient.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-    box.draw();
-	basicGradient.end();
-}
+// Key pressed
+//
+// this changes some stuff in the sketch,
+// make it nice for the users :)
 //---------------------------------------
 void ofApp::keyPressed(int key){
-    
     switch(key){
         case 'f':
             ofToggleFullscreen();
