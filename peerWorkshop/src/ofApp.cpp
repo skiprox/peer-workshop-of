@@ -5,22 +5,38 @@ float circleX = 0.0;
 //---------------------------------------
 void ofApp::setup(){
 	ofSetCircleResolution(100);
+    ofSetSphereResolution(128);
 	ofBackground(34, 34, 34);
-	ofEnableDepthTest();
+    ofEnableDepthTest();
 	ofSetVerticalSync(true);
     ofEnableLighting();
     ofEnableAlphaBlending();
     ofEnableSmoothing();
+    glEnable(GL_DEPTH_TEST);
+
 
     // Explore setup! [NOAH]
     // Create some shapes
     // This provides them with a few 3D shapes,
     // a basic shader on top of that (maybe returning one color)
     // and they can play around with that
+    
+    // for primitives
+    sphere.setRadius(100);
+    
+    // for backward compatibility reasons
+    ofDisableArbTex();
+//    ofLoadImage(tex, "images/empireOfLight.jpg");
+    img.load("images/empireOfLight.jpg");
 
     // An example with lighting,
     // how to incorportate normals into your shader
-    setupLightingExample();
+//    setupLightingExample();
+    
+    
+  
+    setupPrimitiveExample();
+//    setupGradientExample();
 
     // Going further! [SEAN + NOAH, each add 2 frag shaders that can be used later]
     // A raycasting example? Just some more complex frag shaders
@@ -58,7 +74,28 @@ void ofApp::setupRaycastingExample(){
 }
 
 //---------------------------------------
+void ofApp::setupPrimitiveExample(){
+    inkInWaterShader.load("shaders/inkInWater");
+//    center.set(0, 0, 0);
+//    sphere.setRadius(180.0f);
+//    sphere.mapTexCoordsFromTexture(img.getTexture());
+//    ofMesh* mesh = sphere.getMeshPtr();
+//    mesh->setColorForIndices(0, mesh->getNumIndices(), ofColor::red);
+    
+    
+}
+//---------------------------------------
+void ofApp::setupGradientExample(){
+    basicGradient.load("shaders/gradient");
+    
+    plane.set(800,600,80,60);
+   
+}
+//---------------------------------------
 void ofApp::update(){
+    ofBackground(0);
+    
+  
 	circleX = ofMap(
 		sin(ofGetElapsedTimef()),
 		-1.0,
@@ -66,19 +103,37 @@ void ofApp::update(){
 		-ofGetWidth()/2.0,
 		ofGetWidth()/2.0
 	);
+//    setupPrimitiveExample();
+    setupGradientExample();
+    rotate++;
 }
 
 //---------------------------------------
 void ofApp::draw(){
-	cam.begin();
+    cam.begin();
 
 	// Explore examples
 
 	// Lighting shader example
-	runLightingExample();
+//    runLightingExample();
+    
+    
+    //basic gradient example
+//    runGradientExample();
+    
+    //primitive shape texturing example
+    runPrimitiveExample();
+//    ofSetColor(200);
+//    ofFill();
+//    ofDrawBox(0, 0, 0, 100);
+    
+    
+//    sphere.setPosition(0, 0, 0);
+//    sphere.drawWireframe();
+//    sphere.draw();
 
 	// Going further examples
-	runRaycastingExample();
+//    runRaycastingExample();
 
 	cam.end();
 }
@@ -115,4 +170,60 @@ void ofApp::runRaycastingExample(){
 	raycastingShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
 	ofDrawSphere(0.0, 0.0, 0.0, 100);
 	raycastingShader.end();
+}
+
+void ofApp::runPrimitiveExample(){
+    inkInWaterShader.begin();
+    inkInWaterShader.setUniform1f("u_time", ofGetElapsedTimef());
+    inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
+
+//    ofRotateZDeg(rotate);
+//    ofRotateXDeg(rotate);
+//    tex.bind();
+//    box.set(100);
+//    box.setPosition(0,0,0);
+//    box.draw();
+//    ofDrawBox(0, 0, 0, 200);
+//    ofDrawCylinder(0, 0, 0, 50, 100);
+//    sphere.setRadius(100);
+//    sphere.draw();
+//    ofDrawSphere(0,0,0,100);
+    
+//    ofPushMatrix();
+//    ofTranslate(center.x, center.y, center.z - 300);
+//    ofRotate(ofGetElapsedTimef() * .8 * RAD_TO_DEG, 0, 1, 0);
+//    sphere.draw();
+//    ofPopMatrix();
+    //    tex.unbind();
+//    ofPopMatrix();
+    inkInWaterShader.end();
+    
+}
+//---------------------------------------
+void ofApp::runGradientExample(){
+    basicGradient.begin();
+    cam.begin();
+    basicGradient.setUniform1f("u_time", ofGetElapsedTimef());
+    basicGradient.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+
+//    float xPos = ofMap(ofNoise(ofGetElapsedTimef() *0.7),
+//                       -1.0,1.0,
+//                       -ofGetWidth()/2,ofGetWidth()/2);
+//
+//
+//    float yPos = ofMap(ofNoise(ofGetElapsedTimef() *0.2),
+//                       -1.0,1.0,
+//                       -ofGetHeight()/2,ofGetHeight()/2);
+//
+//    float zPos =ofMap(ofNoise(ofGetElapsedTimef() *0.2),
+//                      -1.0,1.0,
+//                      -ofGetHeight()/2,ofGetHeight()/2);
+    
+    
+    ofDrawBox(0,0,0,100);
+//    ofDrawSphere(50, 0, 100);
+
+    cam.end();
+    basicGradient.end();
+    
 }

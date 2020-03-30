@@ -14,19 +14,19 @@ uniform vec4 u_materialColor;
 uniform vec2 u_resolution;
 
 void main(){
-	// This is where the light is
-    vec3 light = vec3(0.5, 2.2, 1.0);
-    light = normalize(light);
-
+    // This is where the light is
+    vec3 light=vec3(.5,2.2,1.);
+    light=normalize(light);
+    
     // dot product
     // make the minimum 0.3 so we get *some* light everywhere
-    float dProd = max(0.3, dot(vecNormal, light));
-
+    float dProd=max(.3,dot(vecNormal,light));
+    
     //color
     // the materialcolor gets passed in from our program,
     // but we could calculate it here *i think*
     // so for example you could have color be a gradient or something
-    vec4 color = u_materialColor;
-    vec4 col = vec4( vec3( dProd ) * vec3( color ), 1.0 );
-    fragColor = col;
+    vec4 color=u_materialColor;
+    vec4 col=vec4(vec3(dProd)*vec3(color),1.);
+    fragColor=col;
 }

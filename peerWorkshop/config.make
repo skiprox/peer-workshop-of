@@ -6,9 +6,9 @@
 ################################################################################
 # OF ROOT
 #   The location of your root openFrameworks installation
-#       (default) OF_ROOT = ../../../../../openFrameworks/../../openFrameworks 
+#       (default) OF_ROOT = ../../../../../../../Applications/of_v0.11.0_osx_release/../../../../../../../Applications/of_v0.11.0_osx_release/../Applications/of_v0.11.0_osx_release/../../../../../../../Applications/of_v0.11.0_osx_release/../../../../../../../Applications/of_v0.11.0_osx_release/../Applications/of_v0.11.0_osx_release/../Applications/of_v0.11.0_osx_release/../../openFrameworks/../../openFrameworks 
 ################################################################################
-# OF_ROOT = ../../../../../openFrameworks/../../openFrameworks
+# OF_ROOT = ../../../../../../../Applications/of_v0.11.0_osx_release/../../../../../../../Applications/of_v0.11.0_osx_release/../Applications/of_v0.11.0_osx_release/../../../../../../../Applications/of_v0.11.0_osx_release/../../../../../../../Applications/of_v0.11.0_osx_release/../Applications/of_v0.11.0_osx_release/../Applications/of_v0.11.0_osx_release/../../openFrameworks/../../openFrameworks
 
 ################################################################################
 # PROJECT ROOT
