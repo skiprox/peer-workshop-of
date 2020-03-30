@@ -15,10 +15,10 @@ class ofApp : public ofBaseApp{
 
 		ofShader colorWithLightShader;
 		ofShader raycastingShader;
-        void setupPrimitiveExample();
+        void setupInkExample();
         void setupGradientExample();
 
-        void runPrimitiveExample();
+        void runInkExample();
         void runGradientExample();
 
         ofShader inkInWaterShader;

@@ -14,6 +14,6 @@ void main(){
     
     // this is the only really important part of the vertex shader:
     // tells openGL where this vertex is on screen
-    gl_Position=position*modelViewProjectionMatrix;
+    gl_Position=modelViewProjectionMatrix * position;
 }
 
