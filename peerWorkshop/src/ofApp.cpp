@@ -25,13 +25,15 @@ void ofApp::setup(){
     // Going further! [SEAN + NOAH, each add 2 frag shaders that can be used later]
     // A raycasting example? Just some more complex frag shaders
     // Passing in uniforms!
+    setupRaycastingExample();
 
     // Vert shader stuff [SEAN]
     // What to do here? idk?
     // Make a blobby shape that wiggles AND RETAINS LIGHTING
 }
 
-// Example from
+// Lighting example
+// help from
 // https://forum.openframeworks.cc/t/3d-model-in-custom-shader/20004/2
 //---------------------------------------
 void ofApp::setupLightingExample(){
@@ -47,6 +49,12 @@ void ofApp::setupLightingExample(){
     // light.enable();
     // light.setDiffuseColor(ofColor(255.0, 255.0, 0.0));
     // light.setPointLight();
+}
+
+// Raycasting example
+//---------------------------------------
+void ofApp::setupRaycastingExample(){
+	raycastingShader.load("shaders/raycasting/shader.vert","shaders/raycasting/shader.frag");
 }
 
 //---------------------------------------
@@ -69,6 +77,9 @@ void ofApp::draw(){
 	// Lighting shader example
 	runLightingExample();
 
+	// Going further examples
+	runRaycastingExample();
+
 	cam.end();
 }
 
@@ -77,6 +88,7 @@ void ofApp::draw(){
 // CHUNKY CODES
 //---------------------------------
 
+// Lighting example
 //---------------------------------------
 void ofApp::runLightingExample(){
 	// Light stuff,
@@ -92,4 +104,15 @@ void ofApp::runLightingExample(){
 	// no longer needed
 	// ofDisableLighting();
 	// light.draw();
+}
+
+// Raycasting example
+//---------------------------------------
+void ofApp::runRaycastingExample(){
+	ofSetColor(255, 100, 140);
+	ofFill();
+	raycastingShader.begin();
+	raycastingShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+	ofDrawSphere(0.0, 0.0, 0.0, 100);
+	raycastingShader.end();
 }

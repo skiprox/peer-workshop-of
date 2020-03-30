@@ -11,6 +11,7 @@ uniform mat4 textureMatrix;
 uniform mat4 normalMatrix;
 // this is set in the OF app
 uniform vec4 u_materialColor;
+uniform vec2 u_resolution;
 
 void main(){
 	// This is where the light is
@@ -21,6 +22,9 @@ void main(){
     float dProd = max(0.0, dot(vecNormal, light));
 
     //color
+    // the materialcolor gets passed in from our program,
+    // but we could calculate it here *i think*
+    // so for example you could have color be a gradient or something
     vec4 color = u_materialColor;
     vec4 col = vec4( vec3( dProd ) * vec3( color ), 1.0 );
     fragColor = col;
