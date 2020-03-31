@@ -3,7 +3,6 @@
 //---------------------------------------
 void ofApp::setup(){
 	ofSetSphereResolution(128);
-	ofBackground(34, 34, 34);
 	ofEnableDepthTest();
 	ofSetVerticalSync(true);
 	ofEnableLighting();
@@ -24,19 +23,23 @@ void ofApp::setup(){
 	setupLightingExample();
 
 	// Gradient example
-	// setupGradientExample();
+	setupGradientExample();
 
 	// Ink example
-	// setupInkExample();
+	setupInkExample();
 
 	// Going further!
-	// A raycasting example? Just some more complex frag shaders
-	// Passing in uniforms!
-	// setupRaycastingExample();
+	// A raycasting example
+	setupRaycastingExample();
 
-	// Vert shader stuff [SEAN]
+	// By yourself!
+	// Do some stuff!
+	setupInClassExample();
+
+	// Vert shader stuff
 	// What to do here? idk?
 	// Make a blobby shape that wiggles AND RETAINS LIGHTING
+	setupVertExample();
 }
 
 // Establish all the primitive shapes
@@ -44,8 +47,6 @@ void ofApp::setup(){
 void ofApp::setupPrimitiveShapes(){
 	bFill = true;
     bWireframe = false;
-    cone.setRadius(100);
-    plane.setWidth(90);
     // basic lighting example
     cylinder.set(100, 200);
     // ink example
@@ -57,12 +58,15 @@ void ofApp::setupPrimitiveShapes(){
 	// raycasting example
 	sphere.setRadius(100);
 	sphere.setPosition(200, 200, 0);
+	// in class example
+	// what shape do you want to use?
+	cone.setRadius(100);
+    plane.setWidth(90);
 }
 
 // Main update function
 //---------------------------------------
 void ofApp::update(){
-	ofBackground(0);
 	circleX = ofMap(
 		sin(ofGetElapsedTimef()),
 		-1.0,
@@ -70,11 +74,11 @@ void ofApp::update(){
 		-ofGetWidth()/2.0,
 		ofGetWidth()/2.0
 	);
-	rotate++;
 }
 
 //---------------------------------------
 void ofApp::draw(){
+	ofBackground(0);
 	/*
 	* Lights! Camera! Action!
 	* *~* That's showbiz, baby *~*
@@ -88,16 +92,23 @@ void ofApp::draw(){
 
 	// Gradient shader example
 	// this is a gradient on a box
-	// runGradientExample();
+	runGradientExample();
 
 	// Ink shader example
 	// this is a goopy ink shader on a sphere
-	// runInkExample();
+	runInkExample();
 
 	// Ray casting example
 	// a sweet ray casting thing
 	// on a sphere
-	// runRaycastingExample();
+	runRaycastingExample();
+
+	// In class example
+	// do whatever you want!
+	runInClassExample();
+
+	// In class vert work
+	runVertExample();
 
 	/*
 	* Closing time
@@ -215,6 +226,52 @@ void ofApp::runRaycastingExample(){
 		raycastingShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
 		sphere.draw();
 		raycastingShader.end();
+    }
+}
+
+// In Class shader setup
+//---------------------------------------
+void ofApp::setupInClassExample(){
+	inClassShader.load("shaders/inClass/shader");
+}
+
+// In Class example
+//---------------------------------------
+void ofApp::runInClassExample(){
+	if(bWireframe == true){
+        sphere.drawWireframe();
+    }
+    if(bFill == true){
+    	ofSetColor(255, 100, 140);
+		ofFill();
+		inClassShader.begin();
+		// Put stuff here
+		// Challenges?
+		// -
+		// - Use the shader as a once-over texture (e.g. bottom of a cube is 0,0 and top is 1,1)
+		inClassShader.end();
+    }
+}
+
+// Vert shader setup
+//---------------------------------------
+void ofApp::setupVertExample(){
+	vertShader.load("shaders/vert/shader");
+}
+
+// Vert example
+//---------------------------------------
+void ofApp::runVertExample(){
+	if(bWireframe == true){
+        sphere.drawWireframe();
+    }
+    if(bFill == true){
+    	ofSetColor(255, 100, 140);
+		ofFill();
+		vertShader.begin();
+		// How do we manipulate vertices and maintain lighting?
+		// work together on this!
+		vertShader.end();
     }
 }
 

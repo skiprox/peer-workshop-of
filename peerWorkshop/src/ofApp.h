@@ -11,6 +11,8 @@ class ofApp : public ofBaseApp{
         void setupRaycastingExample();
         void setupInkExample();
         void setupGradientExample();
+        void setupInClassExample();
+        void setupVertExample();
         void update();
         void draw();
         void keyPressed(int key);
@@ -19,11 +21,15 @@ class ofApp : public ofBaseApp{
         void runRaycastingExample();
         void runInkExample();
         void runGradientExample();
+        void runInClassExample();
+        void runVertExample();
 
         ofShader inkInWaterShader;
         ofShader basicGradient;
         ofShader colorWithLightShader;
         ofShader raycastingShader;
+        ofShader inClassShader;
+        ofShader vertShader;
 
         ofEasyCam cam;
         ofLight light;
@@ -44,7 +50,6 @@ class ofApp : public ofBaseApp{
 
         float circleX = 0.0;
         
-        float rotate;
         float radius;
         ofTexture tex;
         ofImage img;

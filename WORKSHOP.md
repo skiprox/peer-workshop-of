@@ -26,9 +26,10 @@ All openFrameworks projects have a similar structure to start, which looks like 
 ```
 > bin
 	> data
-		> someShaderFile.frag
-		> anotherShaderFile.vert
-		> zebra_doing_a_kickflip.jpg
+		> shaders
+			> example.vert
+			> example.frag
+		> images
 > src
 	> main.cpp
 	> ofApp.cpp
@@ -161,9 +162,9 @@ With that, we're given some variables *for free* in openFrameworks available to 
 * `uniform mat4 modelViewProjectionMatrix;`
 	* A combination of the model, view, and projection matrices. 
 * `uniform mat4 textureMatrix;`
-	* Honestly? A little unsure about this one
-* `uniform vec4 globalColor;`
-	* Global colors available to the shader
+	* TODO: Honestly? A little unsure about this one
+* `uniform vec4 normalMatrix;`
+	* TODO: Not sure!
 
 ## 03 Explore
 
