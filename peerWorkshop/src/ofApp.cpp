@@ -23,23 +23,23 @@ void ofApp::setup(){
 	setupLightingExample();
 
 	// Gradient example
-	setupGradientExample();
+	// setupGradientExample();
 
 	// Ink example
-	setupInkExample();
+	// setupInkExample();
 
 	// Going further!
 	// A raycasting example
-	setupRaycastingExample();
+	// setupRaycastingExample();
 
 	// By yourself!
 	// Do some stuff!
-	setupInClassExample();
+	// setupInClassExample();
 
 	// Vert shader stuff
 	// What to do here? idk?
 	// Make a blobby shape that wiggles AND RETAINS LIGHTING
-	setupVertExample();
+	// setupVertExample();
 }
 
 // Establish all the primitive shapes
@@ -61,7 +61,9 @@ void ofApp::setupPrimitiveShapes(){
 	// in class example
 	// what shape do you want to use?
 	cone.setRadius(100);
+	cone.setPosition(200, -200, 0);
     plane.setWidth(90);
+    plane.setPosition(-200, 200, 0);
 }
 
 // Main update function
@@ -92,23 +94,23 @@ void ofApp::draw(){
 
 	// Gradient shader example
 	// this is a gradient on a box
-	runGradientExample();
+	// runGradientExample();
 
 	// Ink shader example
 	// this is a goopy ink shader on a sphere
-	runInkExample();
+	// runInkExample();
 
 	// Ray casting example
 	// a sweet ray casting thing
 	// on a sphere
-	runRaycastingExample();
+	// runRaycastingExample();
 
 	// In class example
 	// do whatever you want!
-	runInClassExample();
+	// runInClassExample();
 
 	// In class vert work
-	runVertExample();
+	// runVertExample();
 
 	/*
 	* Closing time
