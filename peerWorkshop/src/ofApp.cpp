@@ -1,10 +1,7 @@
 #include "ofApp.h"
 
-float circleX = 0.0;
-
 //---------------------------------------
 void ofApp::setup(){
-	ofSetCircleResolution(100);
 	ofSetSphereResolution(128);
 	ofBackground(34, 34, 34);
 	ofEnableDepthTest();
@@ -13,15 +10,6 @@ void ofApp::setup(){
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
 	glEnable(GL_DEPTH_TEST);
-
-
-	// Explore setup! [NOAH]
-	// Create some shapes
-	// This provides them with a few 3D shapes,
-	// a basic shader on top of that (maybe returning one color)
-	// and they can play around with that
-
-	// for primitives
 
 	// for backward compatibility reasons
 	ofDisableArbTex();
@@ -36,15 +24,15 @@ void ofApp::setup(){
 	setupLightingExample();
 
 	// Ink example
-	setupInkExample();
+	// setupInkExample();
 
 	// Gradient example
-	setupGradientExample();
+	// setupGradientExample();
 
-	// Going further! [SEAN + NOAH, each add 2 frag shaders that can be used later]
+	// Going further!
 	// A raycasting example? Just some more complex frag shaders
 	// Passing in uniforms!
-	setupRaycastingExample();
+	// setupRaycastingExample();
 
 	// Vert shader stuff [SEAN]
 	// What to do here? idk?
@@ -69,39 +57,6 @@ void ofApp::setupPrimitiveShapes(){
 	// raycasting example
 	sphere.setRadius(100);
 	sphere.setPosition(200, 200, 0);
-}
-
-// Lighting example
-// help from
-// https://forum.openframeworks.cc/t/3d-model-in-custom-shader/20004/2
-//---------------------------------------
-void ofApp::setupLightingExample(){
-	colorWithLightShader.load("shaders/lighting/shader.vert","shaders/lighting/shader.frag");
-	// Material stuff,
-	// for this example specifically
-	material.setShininess(120);
-	material.setSpecularColor(ofColor(255, 255, 255, 255));
-	material.setEmissiveColor(ofColor(0, 0, 0, 255));
-	material.setDiffuseColor(ofColor(255, 255, 255, 255));
-	material.setAmbientColor(ofColor(255, 255, 255, 255));
-}
-
-// Ink shader setup
-//---------------------------------------
-void ofApp::setupInkExample(){
-	inkInWaterShader.load("shaders/inkInWater/shader");
-}
-
-// Gradient shader setup
-//---------------------------------------
-void ofApp::setupGradientExample(){
-	basicGradient.load("shaders/gradient/shader");
-}
-
-// Raycasting shader setup
-//---------------------------------------
-void ofApp::setupRaycastingExample(){
-	raycastingShader.load("shaders/raycasting/shader");
 }
 
 // Main update function
@@ -133,16 +88,16 @@ void ofApp::draw(){
 
 	// Gradient shader example
 	// this is a gradient on a box
-	runGradientExample();
+	// runGradientExample();
 
 	// Ink shader example
 	// this is a goopy ink shader on a sphere
-	runInkExample();
+	// runInkExample();
 
 	// Ray casting example
 	// a sweet ray casting thing
 	// on a sphere
-	runRaycastingExample();
+	// runRaycastingExample();
 
 	/*
 	* Closing time
@@ -167,6 +122,21 @@ void ofApp::draw(){
 //---------------------------------
 
 // Lighting example
+// help from
+// https://forum.openframeworks.cc/t/3d-model-in-custom-shader/20004/2
+//---------------------------------------
+void ofApp::setupLightingExample(){
+	colorWithLightShader.load("shaders/lighting/shader");
+	// Material stuff,
+	// for this example specifically
+	material.setShininess(120);
+	material.setSpecularColor(ofColor(255, 255, 255, 255));
+	material.setEmissiveColor(ofColor(0, 0, 0, 255));
+	material.setDiffuseColor(ofColor(255, 255, 255, 255));
+	material.setAmbientColor(ofColor(255, 255, 255, 255));
+}
+
+// Lighting example
 //---------------------------------------
 void ofApp::runLightingExample(){
 	if(bWireframe == true){
@@ -184,6 +154,12 @@ void ofApp::runLightingExample(){
     }
 }
 
+// Ink shader setup
+//---------------------------------------
+void ofApp::setupInkExample(){
+	inkInWaterShader.load("shaders/inkInWater/shader");
+}
+
 // Ink example
 //---------------------------------------
 void ofApp::runInkExample(){
@@ -199,6 +175,12 @@ void ofApp::runInkExample(){
     }
 }
 
+// Gradient shader setup
+//---------------------------------------
+void ofApp::setupGradientExample(){
+	basicGradient.load("shaders/gradient/shader");
+}
+
 // Gradient example, on a box
 //---------------------------------------
 void ofApp::runGradientExample(){
@@ -212,6 +194,12 @@ void ofApp::runGradientExample(){
 	    box.draw();
 		basicGradient.end();
     }
+}
+
+// Raycasting shader setup
+//---------------------------------------
+void ofApp::setupRaycastingExample(){
+	raycastingShader.load("shaders/raycasting/shader");
 }
 
 // Raycasting example

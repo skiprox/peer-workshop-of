@@ -14,6 +14,8 @@ Good online documentation can be found at:
 
 For inspiration, let's check out some of these projects:
 
+* [Zach Lieberman's Instagram](https://www.instagram.com/zach.lieberman/?hl=en)
+* [Memo Atkins Bodypaint](http://www.memo.tv/portfolio/bodypaint/)
 * [Reface Portrait Sequencer](https://vimeo.com/2355887)
 * [Augmented Hand Series](http://www.flong.com/projects/augmented-hand-series/)
 
@@ -39,7 +41,9 @@ This is where we have to store all our shader files (and any other cool things w
 
 #### src/main.cpp
 
-If you've taken an openFrameworks class before (that didn't focus on shaders) you probably mostly ignored the `main.cpp` file that comes with all openFrameworks project builds. This becomes an important file when we start using shaders in openFrameworks because it's where we can tell the program which version of openGL to use.
+If you've taken an openFrameworks class before (that didn't focus on shaders) you probably mostly ignored the `main.cpp` file that comes with all openFrameworks project builds (except when changing the window size). This becomes an important file when we start using shaders in openFrameworks because it's where we can tell the program which version of openGL to use.
+
+For us, we're using openGL 3.2, which corresponds with GLSL 1.5 (which is noted `#version 150` in our shader programs). We're using this because it's the latest version that we can get running that (hopefully) will also work on all your machines.
 
 #### src/ofApp.h
 

@@ -5,18 +5,18 @@
 class ofApp : public ofBaseApp{
 
 	public:
-		void setup();
+        void setup();
         void setupPrimitiveShapes();
-		void setupLightingExample();
-		void setupRaycastingExample();
+        void setupLightingExample();
+        void setupRaycastingExample();
         void setupInkExample();
         void setupGradientExample();
-		void update();
-		void draw();
+        void update();
+        void draw();
         void keyPressed(int key);
 
-		void runLightingExample();
-		void runRaycastingExample();
+        void runLightingExample();
+        void runRaycastingExample();
         void runInkExample();
         void runGradientExample();
 
@@ -24,12 +24,11 @@ class ofApp : public ofBaseApp{
         ofShader basicGradient;
         ofShader colorWithLightShader;
         ofShader raycastingShader;
-    
-		ofEasyCam cam;
-		ofLight light;
-		ofMaterial material;
-    
-    
+
+        ofEasyCam cam;
+        ofLight light;
+        ofMaterial material;
+
         //3d primitives
         ofSpherePrimitive sphere;
         ofCylinderPrimitive cylinder;
@@ -38,18 +37,16 @@ class ofApp : public ofBaseApp{
         ofBoxPrimitive box;
         ofConePrimitive cone;
         ofIcoSpherePrimitive icoSphere;
-        
+
         // Options for drawing 3d primitives
         bool bWireframe;
         bool bFill;
+
+        float circleX = 0.0;
         
         float rotate;
         float radius;
         ofTexture tex;
         ofImage img;
-        ofVec3f center;
-    
-    
-
-		
+        ofVec3f center;	
 };
