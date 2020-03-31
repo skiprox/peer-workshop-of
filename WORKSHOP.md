@@ -166,19 +166,23 @@ With that, we're given some variables *for free* in openFrameworks available to 
 * `uniform vec4 normalMatrix;`
 	* TODO: Not sure!
 
-## 03 Explore
+## 03 Frag Shaders
+
+A walkthrough of the frag shaders that we've provided for you in the repo.
+
+## 04 Explore
+
+Challenges:
+
+* Make your own frag shader and apply it to a custom shape
+* Pass in custom uniforms to manipulate the shader
+	* what about mouse position?
+* Use the shader as a once-over texture (in other words, the coordinates system should be in reference to the object itself and not the field of view)
+
+## 05 Activate
 
 Goals:
 
-* Make a gradient on the circle
-* Add movement to the gradient
-* Apply a frag shader you've previously written or we've covered in class to the circle
-	* What about a raycasting one? :scream:
-
-## 04 Frag Shaders
-
-> Oh, so cool [NOAH]
-
-## 05 Vert Shaders
-
-> Oh cool, neat [BOTH]
+* Use a vert shader to manipulate the vertices of an object
+* Maintain lighting while manipulating the vertices
+* Take in custom uniforms to manipulate vertices with user input (while maintaining lighting!)

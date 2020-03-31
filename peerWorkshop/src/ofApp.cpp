@@ -245,10 +245,9 @@ void ofApp::runInClassExample(){
     	ofSetColor(255, 100, 140);
 		ofFill();
 		inClassShader.begin();
-		// Put stuff here
-		// Challenges?
-		// -
-		// - Use the shader as a once-over texture (e.g. bottom of a cube is 0,0 and top is 1,1)
+		// Challenges!
+		// See the WORKSHOP.md doc for stuff to do
+		// (search for "04 Explore")
 		inClassShader.end();
     }
 }

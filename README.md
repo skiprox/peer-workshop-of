@@ -7,19 +7,16 @@
 In this workshop we will teach the shader openFrameworks pipeline. This will include:
 
 * How openGL versioning works in openFrameworks (and what different versions offer)
-	* This is a warning because different versions use different keywords to the same things. We are going to use *BLANK*
+	* This is a warning because different versions use different keywords to the same things. We are going to use *openGL 3.2* with *GLSL 1.5*
 * Built in variables available to shaders in openFrameworks
 	* uniform mat4 modelViewMatrix;
 	* uniform mat4 projectionMatrix;
 	* uniform mat4 modelViewProjectionMatrix;
 	* uniform mat4 textureMatrix;
-	* uniform vec4 globalColor;
-* Creating objects in openFrameworks to put shaders on
-	* Meshes!
-* Using the same shaders on different objects
-* Using different shaders on different objects
-* Using textures in shaders
-	* Passing images and video as textures
+	* uniform vec4 normalMatrix;
+* Creating objects in openFrameworks to put shaders on them
+	* Frag shaders!
+	* Vert shaders!
 
 ### Learning Objectives
 
@@ -43,13 +40,10 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 
 | Name | Duration | Purpose | Description |
 | ---- | ---- | ---- | ---- |
-| Intro | 5 mins | Engage | Quick review of openFrameworks, why it might be a good tool for you |
-| Walkthrough | 5 mins | Study | Quick review of pipeline, from main.cpp to ofApp.h to ofApp.cpp to vert and frag shaders, talk about built in variables in OF shaders |
-| Explore | 15 mins | Activate | Create a new shape or stick with the existing mesh, play around with values in your vert and frag shaders, pass different uniforms to the shaders to make them interactive |
-| Frag Shaders | 10 mins | Study | Talk through frag shaders in openFrameworks |
-| Frag Shaders | 10 mins | Activate | Run the frag shader repo provided. Update the code to take multiple shaders for multiple objects. Add textures to the shapes |
-| Vert Shaders | 5 mins | Study | Talk through vert shaders in openFrameworks |
-| Vert Shaders | 10 mins | Activate | Run the vert shader repo provided. Talk about vertex manipulation and lighting, and passing information |
+| Intro | 5 mins | Engage | What can openFrameworks do for you? What's some cool stuff people have done in openFrameworks using shaders? |
+| Walkthrough | 20 mins | Study | openFrameworks pipeline, from main.cpp to ofApp.h to ofApp.cpp to vert and frag shaders, talk about built in variables in OF shaders |
+| Frag Shaders | 15 mins | Activate | Play around with the existing frag shaders in the repo, and write your own frag shader  |
+| Vert Shaders | 15 mins | Explore | Work together as a class to try and use vert shaders and manipulate the vertices of objects while maintaining lighting |
 
 
 ### To Prepare/Bring
@@ -63,8 +57,7 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 ### Materials Provided
 
 * This repository with demo starter code to cover the following:
-	* The pipeline, creating objects, built in variables, writing uniforms and varyings and passing them around
-	* Frag shaders on meshes
-	* Textures on meshes
-	* Vert shaders on meshes
+	* The pipeline, creating objects, built in variables, writing uniforms and varyings, ins & outs, and passing them around
+	* Frag shaders
+	* Vert shaders
 
