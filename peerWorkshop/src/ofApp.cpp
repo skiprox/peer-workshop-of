@@ -23,11 +23,11 @@ void ofApp::setup(){
 	// how to incorportate normals into your shader
 	setupLightingExample();
 
-	// Ink example
-	// setupInkExample();
-
 	// Gradient example
 	// setupGradientExample();
+
+	// Ink example
+	// setupInkExample();
 
 	// Going further!
 	// A raycasting example? Just some more complex frag shaders
@@ -154,27 +154,6 @@ void ofApp::runLightingExample(){
     }
 }
 
-// Ink shader setup
-//---------------------------------------
-void ofApp::setupInkExample(){
-	inkInWaterShader.load("shaders/inkInWater/shader");
-}
-
-// Ink example
-//---------------------------------------
-void ofApp::runInkExample(){
-    if(bWireframe == true){
-        icoSphere.drawWireframe();
-    }
-    if(bFill == true){
-    	inkInWaterShader.begin();
-		inkInWaterShader.setUniform1f("u_time", ofGetElapsedTimef());
-		inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
-        icoSphere.draw();
-        inkInWaterShader.end();
-    }
-}
-
 // Gradient shader setup
 //---------------------------------------
 void ofApp::setupGradientExample(){
@@ -193,6 +172,27 @@ void ofApp::runGradientExample(){
 		basicGradient.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
 	    box.draw();
 		basicGradient.end();
+    }
+}
+
+// Ink shader setup
+//---------------------------------------
+void ofApp::setupInkExample(){
+	inkInWaterShader.load("shaders/inkInWater/shader");
+}
+
+// Ink example
+//---------------------------------------
+void ofApp::runInkExample(){
+    if(bWireframe == true){
+        icoSphere.drawWireframe();
+    }
+    if(bFill == true){
+    	inkInWaterShader.begin();
+		inkInWaterShader.setUniform1f("u_time", ofGetElapsedTimef());
+		inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
+        icoSphere.draw();
+        inkInWaterShader.end();
     }
 }
 

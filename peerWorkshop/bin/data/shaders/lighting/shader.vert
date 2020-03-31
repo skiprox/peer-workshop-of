@@ -11,7 +11,6 @@ uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 textureMatrix;
 uniform mat4 normalMatrix;
-uniform vec2 u_resolution;
 
 void main(){
     vecNormal = normal.xzy;
