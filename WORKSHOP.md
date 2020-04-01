@@ -166,7 +166,7 @@ With that, we're given some variables *for free* in openFrameworks available to 
 * `uniform vec4 normalMatrix;`
 	* TODO: Not sure!
 
-## 03 Frag Shaders
+## 03 Frag Shaders (lighting example)
 
 Let's walk through the frag shaders we have for you. In our directory we have these shaders for our _viewing pleasure_:
 
@@ -260,16 +260,16 @@ void main(){
 
 Let's ignore the attributes and uniforms from the programmable renderer. Other than those we have an input (`vecNormal`) which is coming from our `vert` shader, an output (`fragColor`) which we are sending back to our program, and two uniforms (`u_materialColor` and `u_resolution`) which come from our `main.cpp` file. We take these uniforms in our `main()` function and do essentially what we've seen before to calculate the color with lighting (check the Unity examples where we covered lighting).
 
-## 04 Explore
+## 04 Active Frag Shaders
 
 Challenges:
 
+* Play around with these frag shaders we've given you, and change the colors
+* Add new uniforms to the existing frag shaders and use these to change them
 * Make your own frag shader and apply it to a custom shape
-* Pass in custom uniforms to manipulate the shader
-	* what about mouse position?
 * Use the shader as a once-over texture (in other words, the coordinates system should be in reference to the object itself and not the field of view)
 
-## 05 Activate
+## 05 Explore Vert Shaders
 
 Goals:
 

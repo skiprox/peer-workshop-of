@@ -42,8 +42,9 @@ In this workshop we will teach the shader openFrameworks pipeline. This will inc
 | ---- | ---- | ---- | ---- |
 | Intro | 5 mins | Engage | What can openFrameworks do for you? What's some cool stuff people have done in openFrameworks using shaders? |
 | Walkthrough | 20 mins | Study | openFrameworks pipeline, from main.cpp to ofApp.h to ofApp.cpp to vert and frag shaders, talk about built in variables in OF shaders |
-| Frag Shaders | 15 mins | Activate | Play around with the existing frag shaders in the repo, and write your own frag shader  |
-| Vert Shaders | 15 mins | Explore | Work together as a class to try and use vert shaders and manipulate the vertices of objects while maintaining lighting |
+| Frag Shaders | 5 mins | Study | Show off the lighting frag shader, and then uncomment the other shaders in our `main.cpp` file  |
+| Frag Shaders Activate | 15 mins | Activate | Play around with the existing frag shaders in the repo, and write your own frag shader  |
+| Vert Shaders Explore | 15 mins | Explore | Work together as a class to try and use vert shaders and manipulate the vertices of objects while maintaining lighting |
 
 
 ### To Prepare/Bring
