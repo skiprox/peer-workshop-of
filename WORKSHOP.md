@@ -25,15 +25,15 @@ All openFrameworks projects have a similar structure to start, which looks like 
 
 ```
 > bin
-	> data
-		> shaders
-			> example.vert
-			> example.frag
-		> images
+  > data
+    > shaders
+      > shader.vert
+      > shader.frag
+    > images
 > src
-	> main.cpp
-	> ofApp.cpp
-	> ofApp.h
+  > main.cpp
+  > ofApp.cpp
+  > ofApp.h
 ```
 
 #### bin/data
@@ -63,26 +63,26 @@ float circleX = 0.0;
 
 //--------------------------
 void ofApp::setup(){
-	ofSetCircleResolution(100);
-	ofBackground(34, 34, 34);
+  ofSetCircleResolution(100);
+  ofBackground(34, 34, 34);
 }
 
 //--------------------------
 void ofApp::update(){
-	circleX = ofMap(
-		sin(ofGetElapsedTimef()/100.0),
-		-1.0,
-		1.0,
-		0.0,
-		ofGetWidth()
-	);
+  circleX = ofMap(
+    sin(ofGetElapsedTimef()/100.0),
+    -1.0,
+    1.0,
+    0.0,
+    ofGetWidth()
+  );
 }
 
 //--------------------------
 void ofApp::draw(){
-	ofSetColor(245, 58, 135);
-	ofFill();
-	ofDrawCircle(circleX, ofGetHeight()/2.0, 100.0);
+  ofSetColor(245, 58, 135);
+  ofFill();
+  ofDrawCircle(circleX, ofGetHeight()/2.0, 100.0);
 }
 ```
 
@@ -117,33 +117,33 @@ float circleX = 0.0;
 
 //--------------------------
 void ofApp::setup(){
-	ofSetCircleResolution(100);
-	ofBackground(34, 34, 34);
-	// load our shaders
-	shader.load(
-		"someShaderFile.vert",
-		"anotherShaderFile.frag"
-	);
+  ofSetCircleResolution(100);
+  ofBackground(34, 34, 34);
+  // load our shaders
+  shader.load(
+    "someShaderFile.vert",
+    "anotherShaderFile.frag"
+  );
 }
 
 //--------------------------
 void ofApp::update(){
-	circleX = ofMap(
-		sin(ofGetElapsedTimef()/100.0),
-		-1.0,
-		1.0,
-		0.0,
-		ofGetWidth()
-	);
+  circleX = ofMap(
+    sin(ofGetElapsedTimef()/100.0),
+    -1.0,
+    1.0,
+    0.0,
+    ofGetWidth()
+  );
 }
 
 //--------------------------
 void ofApp::draw(){
-	ofSetColor(245, 58, 135);
-	ofFill();
-	shader.begin();
-	ofDrawCircle(circleX, ofGetHeight()/2.0, 100.0);
-	shader.end();
+  ofSetColor(245, 58, 135);
+  ofFill();
+  shader.begin();
+  ofDrawCircle(circleX, ofGetHeight()/2.0, 100.0);
+  shader.end();
 }
 ```
 
@@ -168,7 +168,97 @@ With that, we're given some variables *for free* in openFrameworks available to 
 
 ## 03 Frag Shaders
 
-A walkthrough of the frag shaders that we've provided for you in the repo.
+Let's walk through the frag shaders we have for you. In our directory we have these shaders for our _viewing pleasure_:
+
+```
+> bin
+  > data
+    > shaders
+      > gradient
+        > shader.frag
+        > shader.vert
+      > lighting
+        > shader.frag
+        > shader.vert
+      > inkInWater
+        > shader.frag
+        > shader.vert
+```
+
+We're going to start with the lighting example. The way shaders in openFrameworks works is that (if both vert and frag shaders are passed to the `cpp` file) the vert shader gets run first and then the frag shader, and you are able to pass things from the vert to the frag shader. So, here is what our `lighting/shader.vert` file looks like:
+
+```
+#version 150
+
+// What we send out (to our frag shader)
+out vec3 vecNormal;
+
+// available attributes using programmable renderer
+in vec4 position;
+in vec4 color;
+in vec4 normal;
+in vec2 texcoord;
+
+// these are passed in from OF programmable renderer
+uniform mat4 modelViewProjectionMatrix;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+// Honestly? not quite sure what these are
+uniform mat4 textureMatrix;
+uniform mat4 normalMatrix;
+
+void main(){
+  vecNormal = normal.xzy;
+  gl_Position = modelViewProjectionMatrix * position;
+}
+
+```
+
+So what do we have here? After we declare the version of `GLSL` (1.5, which we note as `#version 150`) we declare what we will be sending `out` to our `frag` shader, a `vec3` called `vecNormal`, which if we look down we see is just the `xyz` values of our `normal`, which is an attribute available from the programmable renderer. We have a bunch of other things that we get for free from the programmable renderer, like the `modelViewProjectionMatrix` and so on. In our `main` function all we do is set our `vecNormal` variable to send out to our `frag` shader, and get `gl_Position` by multiplying the position attribute by the `modelViewProjectionMatrix` to get the position of our object on the screen.
+
+Next, we have our frag shader:
+
+```
+#version 150
+
+// Passed from our vert shader
+in vec3 vecNormal;
+
+// What we send out
+out vec4 fragColor;
+
+// these are passed in from OF programmable renderer
+uniform mat4 modelViewProjectionMatrix;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+// Honestly? not quite sure what these are
+uniform mat4 textureMatrix;
+uniform mat4 normalMatrix;
+// this is set in the OF app
+uniform vec4 u_materialColor;
+uniform vec2 u_resolution;
+
+void main(){
+  // This is where the light is
+  vec3 light = vec3(.5, 2.2, 1.);
+  light = normalize(light);
+    
+  // dot product
+  // make the minimum 0.3 so we get *some* light everywhere
+  float dProd = max(.3, dot(vecNormal, light));
+    
+  //color
+  // the materialcolor gets passed in from our program,
+  // but we could calculate it here *i think*
+  // so for example you could have color be a gradient or something
+  vec4 color = u_materialColor;
+  vec4 col = vec4(vec3(dProd) * vec3(color), 1.);
+  fragColor = col;
+}
+
+```
+
+Let's ignore the attributes and uniforms from the programmable renderer. Other than those we have an input (`vecNormal`) which is coming from our `vert` shader, an output (`fragColor`) which we are sending back to our program, and two uniforms (`u_materialColor` and `u_resolution`) which come from our `main.cpp` file. We take these uniforms in our `main()` function and do essentially what we've seen before to calculate the color with lighting (check the Unity examples where we covered lighting).
 
 ## 04 Explore
 

@@ -1,12 +1,19 @@
 #version 150
 
-// in
+// Passed from our vert shader
 in vec3 vecNormal;
 
-// out
-out vec4 outputColor;// fragment shader always has one vec4 output: the pixel color
+// What we send out
+out vec4 fragColor;
 
-// uniforms
+// these are passed in from OF programmable renderer
+uniform mat4 modelViewProjectionMatrix;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+// Honestly? not quite sure what these are
+uniform mat4 textureMatrix;
+uniform mat4 normalMatrix;
+// this is set in the OF app
 uniform vec2 u_resolution;
 uniform float u_time;
 
@@ -36,5 +43,5 @@ void main(){
     vec4 color = vec4(cos(len), cos(len*1.4), cos(len*1.3), 1.);
     vec4 colorWithLighting = vec4(vec3(dProd)*vec3(color),1.);
 
-    outputColor = colorWithLighting;
+    fragColor = colorWithLighting;
 }

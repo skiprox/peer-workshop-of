@@ -23,19 +23,19 @@ void ofApp::setup(){
 	setupLightingExample();
 
 	// Gradient example
-	// setupGradientExample();
+	setupGradientExample();
 
 	// Ink example
-	// setupInkExample();
+	setupInkExample();
 
 	// By yourself!
 	// Do some stuff!
-	// setupInClassExample();
+	setupInClassExample();
 
 	// Vert shader stuff
 	// What to do here? idk?
 	// Make a blobby shape that wiggles AND RETAINS LIGHTING
-	// setupVertExample();
+	setupVertExample();
 }
 
 // Establish all the primitive shapes
@@ -89,18 +89,18 @@ void ofApp::draw(){
 
 	// Gradient shader example
 	// this is a gradient on a box
-	// runGradientExample();
+	runGradientExample();
 
 	// Ink shader example
 	// this is a goopy ink shader on a sphere
-	// runInkExample();
+	runInkExample();
 
 	// In class example
 	// do whatever you want!
-	// runInClassExample();
+	runInClassExample();
 
 	// In class vert work
-	// runVertExample();
+	runVertExample();
 
 	/*
 	* Closing time
@@ -232,7 +232,7 @@ void ofApp::setupVertExample(){
 //---------------------------------------
 void ofApp::runVertExample(){
 	if(bWireframe == true){
-        sphere.drawWireframe();
+        cone.drawWireframe();
     }
     if(bFill == true){
     	ofSetColor(255, 100, 140);
