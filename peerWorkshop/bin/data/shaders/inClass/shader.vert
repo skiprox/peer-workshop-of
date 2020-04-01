@@ -1,9 +1,13 @@
 #version 150
+
+// What we send out (to our frag shader)
 out vec3 vecNormal;
 
+// available attributes using programmable renderer
 in vec4 position;
 in vec4 color;
 in vec4 normal;
+in vec2 texcoord;
 
 // these are passed in from OF programmable renderer
 uniform mat4 modelViewProjectionMatrix;

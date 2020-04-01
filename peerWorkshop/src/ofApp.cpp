@@ -23,14 +23,14 @@ void ofApp::setup(){
 	setupLightingExample();
 
 	// Gradient example
-	setupGradientExample();
+	// setupGradientExample();
 
 	// Ink example
-	setupInkExample();
+	// setupInkExample();
 
 	// By yourself!
 	// Do some stuff!
-	setupInClassExample();
+	// setupInClassExample();
 
 	// Vert shader stuff
 	// What to do here? idk?
@@ -89,18 +89,18 @@ void ofApp::draw(){
 
 	// Gradient shader example
 	// this is a gradient on a box
-	runGradientExample();
+	// runGradientExample();
 
 	// Ink shader example
 	// this is a goopy ink shader on a sphere
-	runInkExample();
+	// runInkExample();
 
 	// In class example
 	// do whatever you want!
-	runInClassExample();
+	// runInClassExample();
 
 	// In class vert work
-	runVertExample();
+	// runVertExample();
 
 	/*
 	* Closing time
@@ -215,6 +215,7 @@ void ofApp::runInClassExample(){
     	ofSetColor(255, 100, 140);
 		ofFill();
 		inClassShader.begin();
+		inClassShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
 		// Challenges!
 		// See the WORKSHOP.md doc for stuff to do
 		// (search for "04 Explore")
@@ -238,6 +239,7 @@ void ofApp::runVertExample(){
     	ofSetColor(255, 100, 140);
 		ofFill();
 		vertShader.begin();
+		vertShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
 		// How do we manipulate vertices and maintain lighting?
 		// work together on this!
 		vertShader.end();
