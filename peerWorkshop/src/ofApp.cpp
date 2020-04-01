@@ -28,10 +28,6 @@ void ofApp::setup(){
 	// Ink example
 	// setupInkExample();
 
-	// Going further!
-	// A raycasting example
-	// setupRaycastingExample();
-
 	// By yourself!
 	// Do some stuff!
 	// setupInClassExample();
@@ -55,11 +51,10 @@ void ofApp::setupPrimitiveShapes(){
     // gradient example
     box.set(100);
 	box.setPosition(-200, -200, 0);
-	// raycasting example
+	// in class examples
+	// what shape do you want to use?
 	sphere.setRadius(100);
 	sphere.setPosition(200, 200, 0);
-	// in class example
-	// what shape do you want to use?
 	cone.setRadius(100);
 	cone.setPosition(200, -200, 0);
     plane.setWidth(90);
@@ -99,11 +94,6 @@ void ofApp::draw(){
 	// Ink shader example
 	// this is a goopy ink shader on a sphere
 	// runInkExample();
-
-	// Ray casting example
-	// a sweet ray casting thing
-	// on a sphere
-	// runRaycastingExample();
 
 	// In class example
 	// do whatever you want!
@@ -206,28 +196,6 @@ void ofApp::runInkExample(){
 		inkInWaterShader.setUniform2f("u_resolution", ofGetWidth(),ofGetHeight());
         icoSphere.draw();
         inkInWaterShader.end();
-    }
-}
-
-// Raycasting shader setup
-//---------------------------------------
-void ofApp::setupRaycastingExample(){
-	raycastingShader.load("shaders/raycasting/shader");
-}
-
-// Raycasting example
-//---------------------------------------
-void ofApp::runRaycastingExample(){
-	if(bWireframe == true){
-        sphere.drawWireframe();
-    }
-    if(bFill == true){
-    	ofSetColor(255, 100, 140);
-		ofFill();
-		raycastingShader.begin();
-		raycastingShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-		sphere.draw();
-		raycastingShader.end();
     }
 }
 

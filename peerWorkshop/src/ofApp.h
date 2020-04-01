@@ -8,7 +8,6 @@ class ofApp : public ofBaseApp{
         void setup();
         void setupPrimitiveShapes();
         void setupLightingExample();
-        void setupRaycastingExample();
         void setupInkExample();
         void setupGradientExample();
         void setupInClassExample();
@@ -18,7 +17,6 @@ class ofApp : public ofBaseApp{
         void keyPressed(int key);
 
         void runLightingExample();
-        void runRaycastingExample();
         void runInkExample();
         void runGradientExample();
         void runInClassExample();
@@ -27,7 +25,6 @@ class ofApp : public ofBaseApp{
         ofShader inkInWaterShader;
         ofShader basicGradient;
         ofShader colorWithLightShader;
-        ofShader raycastingShader;
         ofShader inClassShader;
         ofShader vertShader;
 
